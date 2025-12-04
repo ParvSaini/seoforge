@@ -4,48 +4,12 @@
     <meta charset="utf-8" />
     <title>SEOForge — Starter</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <style>
-      body { font-family: Arial, Helvetica, sans-serif; padding: 24px; }
-      .card { max-width: 720px; margin: 0 auto; padding: 18px; border: 1px solid #eee; border-radius: 8px; }
-      button { padding: 8px 12px; margin-top: 10px; }
-      input { padding: 8px; width: 100%; box-sizing: border-box; margin-top: 6px; }
-      pre { background:#f6f6f6; padding:8px; border-radius:6px; }
-    </style>
   </head>
   <body>
-    <div class="card">
-      <h1>SEOForge — Starter</h1>
-      <p>API health:</p>
-      <pre id="health">loading…</pre>
-
-      <p>Enqueue a test crawl job:</p>
-      <input id="url" placeholder="https://example.com" value="https://example.com" />
-      <button id="enqueue">Enqueue Crawl Job</button>
-      <pre id="result"></pre>
-
-      <script>
-        async function loadHealth(){
-          try{
-            const res = await fetch('/api/v1/healthz');
-            const j = await res.json();
-            document.getElementById('health').innerText = JSON.stringify(j, null, 2);
-          }catch(e){
-            document.getElementById('health').innerText = 'Error: ' + e.message;
-          }
-        }
-        document.getElementById('enqueue').addEventListener('click', async ()=>{
-          const url = document.getElementById('url').value;
-          document.getElementById('result').innerText = 'queuing…';
-          try{
-            const res = await fetch('/api/v1/enqueue', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ url })});
-            const j = await res.json();
-            document.getElementById('result').innerText = JSON.stringify(j, null, 2);
-          }catch(e){
-            document.getElementById('result').innerText = 'Error: ' + e.message;
-          }
-        });
-        loadHealth();
-      </script>
-    </div>
+    <h1>SEOForge Starter Frontend</h1>
+    <p>API health: <span id="health">loading…</span></p>
+    <script>
+      fetch('/api/v1/healthz').then(r=>r.json()).then(j=>document.getElementById('health').innerText=JSON.stringify(j));
+    </script>
   </body>
 </html>
