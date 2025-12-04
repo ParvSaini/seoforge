@@ -1,0 +1,26 @@
+{
+  "services": [
+    {
+      "name": "seoforge-frontend",
+      "path": "services/frontend",
+      "buildCommand": "npm ci && npm run build",
+      "startCommand": "nginx -g 'daemon off;'"
+    },
+    {
+      "name": "seoforge-api",
+      "path": "services/api",
+      "buildCommand": "npm ci && npm run build",
+      "startCommand": "node dist/main.js"
+    },
+    {
+      "name": "seoforge-worker",
+      "path": "services/worker",
+      "buildCommand": "npm ci && npm run build",
+      "startCommand": "node dist/worker.js"
+    }
+  ],
+  "plugins": [
+    { "type": "postgres" },
+    { "type": "redis" }
+  ]
+}
