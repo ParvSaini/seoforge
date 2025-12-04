@@ -4,14 +4,13 @@
   "private": true,
   "main": "server.js",
   "scripts": {
-    "build": "mkdir -p dist && cp -R public/* dist/",
-    "start": "node server.js",
-    "dev": "node server.js"
+    "build": "mkdir -p dist && cp -R public/* dist/ || true",
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.18.2"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   }
 }
