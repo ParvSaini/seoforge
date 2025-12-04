@@ -2,14 +2,13 @@
   "name": "seoforge-worker",
   "version": "0.1.0",
   "private": true,
-  "main": "dist/worker.js",
+  "main": "src/worker.js",
   "scripts": {
-    "build": "mkdir -p dist && cp -R src/* dist/",
-    "start": "node dist/worker.js",
-    "dev": "node src/worker.js"
+    "build": "mkdir -p dist && cp -R src/* dist/ || true",
+    "start": "node dist/worker.js"
   },
   "dependencies": {},
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   }
 }
