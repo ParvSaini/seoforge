@@ -2,12 +2,14 @@
   "name": "seoforge-worker",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/worker.js",
   "scripts": {
-    "build": "mkdir -p dist && cp -R src/* dist/ || true",
-    "start": "node dist/worker.js"
+    "build": "mkdir -p dist && cp -R src/* dist/",
+    "start": "node dist/worker.js",
+    "dev": "node src/worker.js"
   },
-  "dependencies": {
-    "bullmq": "^1.50.0",
-    "ioredis": "^5.3.2"
+  "dependencies": {},
+  "engines": {
+    "node": ">=14"
   }
 }
