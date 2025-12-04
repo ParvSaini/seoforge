@@ -3,24 +3,21 @@
     {
       "name": "seoforge-frontend",
       "path": "services/frontend",
-      "buildCommand": "npm ci && npm run build || true",
-      "startCommand": "node server.js"
+      "buildCommand": "npm ci || npm install && npm run build || echo \"no build step (OK if server.js serves public/index.html)\"",
+      "startCommand": "nginx -g 'daemon off;'"
     },
     {
       "name": "seoforge-api",
       "path": "services/api",
-      "buildCommand": "npm ci",
-      "startCommand": "node src/server.js"
+      "buildCommand": "npm ci || npm install && npm run build || echo \"no build step\"",
+      "startCommand": "node dist/main.js"
     },
     {
       "name": "seoforge-worker",
       "path": "services/worker",
-      "buildCommand": "npm ci",
-      "startCommand": "node src/worker.js"
+      "buildCommand": "npm ci || npm install && npm run build || echo \"no build step\"",
+      "startCommand": "node dist/worker.js"
     }
   ],
-  "plugins": [
-    { "type": "postgres" },
-    { "type": "redis" }
-  ]
+  "plugins":[{"type":"postgres"},{"type":"redis"}]
 }
